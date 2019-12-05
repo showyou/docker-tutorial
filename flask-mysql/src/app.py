@@ -7,11 +7,15 @@ import os
 app = Flask(__name__)
 
 #db_uri = 'sqlite:///test.db'
+user = 'root'
+password = 'hoge'
+host = 'db'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://{user}:{password}@{host}/bbs?charset=utf8'.format(**{
         'user': os.getenv('DB_USER', user),
         'password': os.getenv('DB_PASSWORD', password),
         'host': os.getenv('DB_HOST', host),
     })
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 db.init_app(app)
 migrate = Migrate(app, db)
