@@ -1,0 +1,6 @@
+flask
+sqlalchemy
+flask-sqlalchemy
+Flask-Migrate
+pymysql
+cryptography
